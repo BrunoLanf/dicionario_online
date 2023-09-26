@@ -45,8 +45,8 @@ function inserirRespostas(objRespostas) {
     resultadoDescricao.textContent = objRespostas.descricao;
 }
 
-function requisicaoFormulario(palavraParaBuscar) {
-    let url = `https://api.dicionario-aberto.net/word/${palavraParaBuscar}`;
+function requisicaoFormulario(palavraBuscar) {
+    let url = `https://api.dicionario-aberto.net/word/${palavraBuscar}`;
 
     fetch(url)
         .then((resposta) => resposta.json())
@@ -56,8 +56,8 @@ function requisicaoFormulario(palavraParaBuscar) {
                 return;
             }
 
-            let conteudoParseado = parserXML(resposta[0].xml);
-            inserirRespostas(conteudoParseado);
+            let conteudo = parserXML(resposta[0].xml);
+            inserirRespostas(conteudo);
         })
         .finally(() => {
             mostrarResultado();
